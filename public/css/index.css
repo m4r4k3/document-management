@@ -53,13 +53,3 @@ nav form input {
     box-shadow: 0 0 1px black ;
 }
 
-.chercher{
-    color: white; 
-    background-color: rgb(70, 73, 255);
-    width: 50px;
-    height: 25px;
-    transition: 500ms;
-}
-.chercher:hover{
-    background-color: rgba(128, 128, 128, 0.288);
-}

@@ -16,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/panel", [PanelController::class , "index"])->name("panelIndex");
+Route::get("/panel/utilisateurs", [PanelController::class , "utilisateurs"])->name("panelUtilisateurs");
+Route::get("/panel/documents", [PanelController::class , "documents"])->name("panelDocument");
+Route::get("/panel/utilisateurs/ajouter", [PanelController::class , "ajouterUtilisateurs"])->name("ajouterUtilisateurs");
+Route::get("/panel/historique", [PanelController::class , "historique"])->name("panelHistorique");
+
 Route::middleware(["auth"])->group(function (){
     Route::get("/", [DocumentController::class ,"show"])->name("home"); 
     Route::get("/add", [DocumentController::class , "addShow"])->name("addShow");
-    Route::get("/panel", [PanelController::class , "index"])->name("panelIndex");
     Route::post("/add", [DocumentController::class , "add"])->name("add");
     Route::get("/document/{order}", [DocumentController::class , "editShow"])->name("editShow");
     Route::put("/document/edit/{order}", [DocumentController::class , "edit"])->name("edit");

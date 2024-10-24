@@ -1,9 +1,10 @@
 <aside>
     <ul class="buttons">
-        <li><div class="rounded-logo" title="utilisteurs"><i class="fa-solid fa-users"></i></div></li>
-        <li><div class="rounded-logo" title="documents"><i class="fa-solid fa-file"></i></div></li>
-        <li><div class="rounded-logo" title="ajouter utilisateur"><i class="fa-solid fa-user-plus"></i></div></li>
-        <li><div class="rounded-logo" title="historique"><i class="fa-solid fa-rectangle-history"></i></div></li>
+        <li><a class="rounded-logo" href="/panel" title="panel"><i class="fa-solid fa-house"></i></a></li>
+        <li><a class="rounded-logo" href="/panel/utilisateurs" title="utilisteurs"><i class="fa-solid fa-users"></i></a></li>
+        <li><a class="rounded-logo" href="/panel/documents" title="documents"><i class="fa-solid fa-file"></i></a></li>
+        <li><a class="rounded-logo" href="/panel/utilisateurs/ajouter" title="ajouter utilisateur"><i class="fa-solid fa-user-plus"></i></a></li>
+        <li><a class="rounded-logo" href="/panel/historique" title="historique"><i class="fa-solid fa-rectangle-history"></i></a></li>
         <li><div class="rounded-logo" title="analyse"><i class="fa-solid fa-chart-mixed"></i></li>
         <li><div class="rounded-logo" title="mon profile"><i class="fa-solid fa-user"></i></div></li>
     </ul>

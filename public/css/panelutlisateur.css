@@ -1,0 +1,38 @@
+.search{
+    width: 100%;
+    display: grid;
+    place-content: center;
+    height: 10vh;
+}
+.search>div>input{
+    height: 30px;
+    width: 250px;
+    outline: 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-left: 5px;
+}
+.search>div>button{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    outline: 0;
+    background-color: #19153b;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 5px;
+}
+.sub-container{
+    width: 100%;
+}
+.title-sub{
+    padding-left: 40px;
+    font-weight: 500;
+    padding-top: 40px ;
+    font-size: 1.5em;
+
+}
+.table{
+    width: 90% !important;
+}
