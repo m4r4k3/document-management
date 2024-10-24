@@ -1,0 +1,65 @@
+
+nav input{
+    outline: none;
+    border:0;
+    box-shadow: 0 0 1px black;
+    height: 20px;
+   padding-left: 5px;
+}
+
+nav button{
+    outline: 0;
+    border: 0;
+    box-shadow: 0 0 1px black ;
+    cursor: pointer;
+}
+
+nav{
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding:0  20px;
+    gap: 50px;
+    box-shadow: 0 0px 1px black;
+}
+
+.ajouter{
+    background-color: rgb(21, 23, 53);
+    padding: 5px 20px;
+    color: white;
+}
+
+.deconnecter{
+    background-color: red;
+    padding: 5px 20px;
+    color: white;
+}
+
+.ajouter:hover{
+       transition: 350ms;
+    background-color: rgba(27, 21, 80, 0.493);
+}
+.deconnecter:hover{
+    transition: 350ms;
+    background-color: rgba(255, 0, 0, 0.493);
+}
+
+nav form input {
+    width: 250px;
+    height: 25px;
+    box-shadow: 0 0 1px black ;
+}
+
+.chercher{
+    color: white; 
+    background-color: rgb(70, 73, 255);
+    width: 50px;
+    height: 25px;
+    transition: 500ms;
+}
+.chercher:hover{
+    background-color: rgba(128, 128, 128, 0.288);
+}

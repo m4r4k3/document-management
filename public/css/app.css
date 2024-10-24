@@ -1,0 +1,41 @@
+*{
+    margin:0 ;
+    padding:0 ;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgba(128, 128, 128, 0.048);
+}
+.year {
+    padding: 1% 2%;
+}
+table {
+    margin: 0 auto;
+    border-spacing: 0;
+    width: 90vw;
+    background-color: #474569;
+}
+table , thead , tr ,td ,
+table {
+    color: white;
+    border: 1px solid;
+}
+
+thead {
+    font-weight: 700;
+    background-color: #2b2941;
+
+}
+
+td{
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+}
+.box {
+    
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}

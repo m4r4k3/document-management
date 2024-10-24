@@ -1,0 +1,83 @@
+.box-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    height: 500px;
+    width:500px;
+    flex-direction: column;
+    box-shadow: 0 0 5px inset black ;
+    border-radius: 5px;
+    padding: 30px;
+}
+.info-title{
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.info-title div{
+    margin-top: 5px;
+}
+.info-title span{
+    width: 160px;
+    display: inline-block;
+}
+.info-title label{
+    display: inline-block;
+    margin-left: 10px;
+}
+.worker-info,.documents{
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+label{
+    font-weight: 600;
+    display: inline-block;
+    width: 120px;
+    margin-right: 10px;
+}
+.documents >div{
+    display: flex;
+}
+.documents > div >div{
+    display: flex;
+    width: 100px;
+    justify-content: space-between;
+}
+.submit{
+    width: 50%;
+    margin: 0 auto;
+    height: 30px;
+    display: none;
+    color: white;
+    background-color: rgba(7, 13, 48, 0.562);
+    font-size: 18px;
+}
+.submit:active{
+    background-color: white;
+    color:black ;  
+    transition: 350ms;
+}
+.modifier{
+    cursor: pointer;
+    color: rgb(3, 3, 41);
+}
+.aucune{
+    color: red;
+}
+.modifier input {
+    display: none;
+    border: 0;
+    box-shadow: none;
+    height: 25px;
+    width: 95px;
+}
