@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             
-            $table->string('order');
-            $table->string('by');
+            $table->unsignedBigInteger('order');
+            $table->unsignedBigInteger('by');
             $table->string("from")->nullable();
             $table->string("to");
             $table->string("case");
