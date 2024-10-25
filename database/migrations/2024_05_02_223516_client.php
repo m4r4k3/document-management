@@ -13,12 +13,18 @@ return new class extends Migration {
         Schema::create("client", function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("nom_client");
-            $table->string("modifier_par")->default("aucun");
-            $table->string("numero_cin");
-            $table->string("creer_par");
+            
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string("cin");
+
+            $table->unsignedBigInteger("modifier_par");
+            $table->unsignedBigInteger("creer_par");
+
             $table->rememberToken();
 
+            $table->foreign("modifier_par")->references("id")->on("user") ;
+            $table->foreign("creer_par")->references("id")->on("user") ;
         });
     }
 
