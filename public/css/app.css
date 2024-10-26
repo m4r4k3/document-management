@@ -29,9 +29,10 @@ thead {
 }
 
 td{
+    height: 40px;
+    cursor: pointer;
     color: white;
     text-align: center;
-    padding: 10px 0px;
 }
 .box {
     
@@ -96,4 +97,13 @@ aside{
 .delete-button > div{
     background-color: inherit;
     color: white;
+}
+td>*{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
 }

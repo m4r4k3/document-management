@@ -12,9 +12,17 @@ class clientSeeder extends Seeder
      */
    public function run(): void
     {
-        Client::create([
-            "n_client"=>"0100",
-            "nom_client"=>"marwane akchar"
+        Client::create( [
+            'nom' => 'Doe',
+            'prenom' => 'John',
+            'cin' => 'A12345678',
+            'creer_par' => 1, 
+        ]);
+        Client::create( [
+            'nom' => 'Smith',
+            'prenom' => 'Jane',
+            'cin' => 'B98765432',
+            'creer_par' =>1,   
         ]);
     }  
 }

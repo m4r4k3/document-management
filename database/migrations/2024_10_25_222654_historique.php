@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create("historique", function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            
             $table->unsignedBigInteger('order');
             $table->unsignedBigInteger('by');
             $table->string("from")->nullable();

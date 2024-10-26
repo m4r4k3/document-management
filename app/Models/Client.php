@@ -9,5 +9,16 @@ class Client extends Model
 {
     use HasFactory;
     protected  $table = "client";
-protected $fillable= ["n_client", "nom_client",  "numero_cin" ,"creer_par", "modifier_par"];
+    protected $fillable= [ "nom" ,"prenom",  "cin" ,"creer_par", "modifier_par"];
+
+    public function creater (){
+        return $this->hasOne(User::class , "id","creer_par" );
+    }
+    public function modifier_par (){
+        return $this->hasOne(User::class , "id","modifier_par" );
+    }
+    public function order () {
+        return $this->belongsTo(Order::class , "client") ;
+        }
+    
 }

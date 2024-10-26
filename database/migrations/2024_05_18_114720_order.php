@@ -14,15 +14,20 @@ return new class extends Migration
     Schema::create("order", function (Blueprint $table){
         $table->id();
         $table->timestamps();
-        $table->unsignedBigInteger("client")->unsigned();
-        $table->string("modifier_par")->default("aucun");
-        $table->string("creer_par");
+
+        $table->unsignedBigInteger("client_id");
+        $table->unsignedBigInteger("modifier_par")->nullable();
+        $table->unsignedBigInteger("creer_par");
+
         $table->string("cin")->nullable();
         $table->string("attestation")->nullable();
         $table->string("CG")->nullable();
         $table->string("PC")->nullable();
         $table->string("contrat")->nullable();
-        $table->foreign("client")->references("id")->on("client");
+
+        $table->foreign("modifier_par")->references("id")->on("user") ;
+        $table->foreign("creer_par")->references("id")->on("user") ;
+        $table->foreign("client_id")->references("id")->on("client");
     }) ;
 
     }

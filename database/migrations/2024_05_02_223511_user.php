@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string("role"); 
             $table->string("cin"); 
             $table->rememberToken();
-            $table->string("nom_complet");
             $table->timestamps();
         })  ; 
     }

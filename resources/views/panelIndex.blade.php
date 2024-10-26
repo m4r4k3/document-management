@@ -24,27 +24,24 @@
                     </div>
                     <table>
                         <thead>
-                            <td>Id order</td>
-                            <td>Numero client</td>
-                            <td>Nom complet</td>
-                            <td>Créer au</td>
-                            <td>Numero cin</td>
+                        <td>Id</td>
+                        <td>Nom</td>
+                        <td>Prenom</td>
+                        <td>CIN</td>
+                        <td>Creer par</td>
+                        <td cla>Date d'ajout</td>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                            </tr>
-                            <tr>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                                <td>placeholder</td>
-                            </tr>
+                            @foreach ($data as $item)
+                             <tr>
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->nom}}</td>
+                                <td>{{$item->prenom}}</td>
+                                <td>{{$item->cin}}</td>
+                                <td>{{$item->creater->nom}} {{$item->creater->prenom}}</td>
+                                <td>{{$item->created_at}}</td>
+                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

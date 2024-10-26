@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
+use Response;
 
 class PanelController extends Controller
 {
    public function index() {
-    return view("panelIndex") ;
+      $data = Client::with("creater")->limit(2)->get();
+      return view("panelIndex" , compact(["data"])) ;
    }
    public function utilisateurs(){
       return view("panelUtilisateurs") ;

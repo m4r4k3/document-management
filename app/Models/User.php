@@ -9,6 +9,11 @@ class User extends Model
 {
     use HasFactory;
     protected $table ="user";
-    protected $fillable =["user", "password","nom_complet",'remember_token'];
+    protected $fillable =["user", "password","nom" ,"prenom" ,"role" ,"cin",'remember_token'];
+    protected $hidden = [
+        "user" ,
+        'password', // Add any other sensitive fields here
+        'remember_token', // Example: If you want to hide the remember_token as well
+    ];
 
 }

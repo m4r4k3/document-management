@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('prenom');
             $table->string("cin");
 
-            $table->unsignedBigInteger("modifier_par");
+            $table->unsignedBigInteger("modifier_par")->nullable();
             $table->unsignedBigInteger("creer_par");
 
             $table->rememberToken();

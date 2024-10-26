@@ -22,19 +22,21 @@ selectioner par date :
 </form>
 <table class="box-container">
     <thead class="header">
-        <td>Id order</td>
-        <td>Numero client</td>
-        <td>Nom complet</td>
-        <td>Créer au</td>
-        <td>Numero cin</td>
+        <td><a href="/?sort=orderId&order={{$order == "asc" ?"desc":"asc"}}">order</a></td>
+        <td><a href="/?sort=nClient&order={{$order == "asc" ?"desc":"asc"}}">Numero client</a></td>
+        <td><a href="/?sort=nom&order={{$order == "asc" ?"desc":"asc"}}"> Nom</a></td>
+        <td><a href="/?sort=prenom&order={{$order == "asc" ?"desc":"asc"}}"> Prenom</a></td>
+        <td><a href="/order={{$order == "asc" ?"desc":"asc"}}"> Créer au</a></td>
+        <td><a href="/?sort=cin&order={{$order == "asc" ?"desc":"asc"}}"> Numero cin</a></td>
     </thead>
     @foreach ($data as $item)
     <x-box 
-    id="{{$item->id_order}}"
-    nom_complet="{{$item->nom_client}}"
-    numero_client="{{$item->client}}"
-    created_at="{{$item->date_order}}" 
-    numero_cin="{{$item->numero_cin}}">
+    id="{{$item->id}}"
+    prenom="{{$item->client->prenom}}"
+    nom="{{$item->client->nom}}"
+    numero_client="{{$item->client->id}}"
+    created_at="{{$item->created_at}}" 
+    numero_cin="{{$item->client->cin}}">
 </x-box>
     @endforeach
 </table>

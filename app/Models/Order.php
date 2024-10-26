@@ -9,5 +9,15 @@ class Order extends Model
 {
     use HasFactory;
     public $table = "order";
-    public $fillable =["client" ,"modifier_par","creer_par","cin","attestation","CG","PC","contrat"];	
+    public $fillable =["client_id" ,"modifier_par","creer_par","cin","attestation","CG","PC","contrat"];	
+    public function client () {
+        return $this->hasOne(Client::class ,"id" ,"client_id");
+    }
+    public function creer_par (){
+        return $this->hasOne(User::class , "id","creer_par" );
+    }
+    public function modifier_par (){
+        return $this->hasOne(User::class , "id","modifier_par" );
+    }
+    
 }
