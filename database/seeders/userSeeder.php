@@ -18,7 +18,7 @@ class userSeeder extends Seeder
                 "password"=>bcrypt("admin"),
                 "nom"=>"akchar", 
                 "prenom"=>"marouane" ,
-                "role"=>"admin" ,
+                "role"=>1   ,
                 "cin"=>"bk2024" ,
             
         ]);

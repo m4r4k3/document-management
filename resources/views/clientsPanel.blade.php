@@ -28,8 +28,9 @@
                         <td>CIN</td>
                         <td>Creer par</td>
                         <td>Date d'ajout</td>
+                        <td>Nombre de documents</td>
                         <td>Nombre d'ordres</td>
-                        <td>Stockage reservé</td>
+                        <td>Stockage reservé (mb)</td>
                         </thead>
                         <tbody>
                             @foreach ($data as $item)
@@ -40,8 +41,9 @@
                                 <td>{{$item->cin}}</td>
                                 <td>{{$item->creater->nom}} {{$item->creater->prenom}}</td>
                                 <td>{{$item->created_at}}</td>
+                                <td>{{$item->numDocs}}</td>
                                 <td>{{$item->order_count}}</td>
-                                <td></td>
+                                <td>{{number_format((float)($item->size*0.0000001192), 2, '.', '')}}</td>
                              </tr>
                             @endforeach
                         </tbody>

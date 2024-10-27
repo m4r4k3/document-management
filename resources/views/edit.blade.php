@@ -31,7 +31,7 @@ Modifier
             <label>CIN :</label> 
             @if($data->cin)
             <div> 
-                <a href= "/storage/{{$data->cin}}">Voir</a>
+                <a href= "/storage/{{$data->cinDoc->path}}">Voir</a>
             </div> 
             @else
                 <div>aucune</div>
@@ -42,7 +42,7 @@ Modifier
             <label>CG:</label>  
             @if($data->CG)
             <div>
-                <a href= "/storage/{{$data->CG}}">Voir</a>
+                <a href= "/storage/{{$data->cgDoc->path}}">Voir</a>
             </div> 
             @else
                 <div>aucune</div>
@@ -53,7 +53,7 @@ Modifier
             <label>PC :</label>
             @if($data->PC)
             <div> 
-                 <a href="/storage/{{$data->PC}}">Voir</a>
+                 <a href="/storage/{{$data->pcDoc->path}}">Voir</a>
             </div>  
             @else
                 <div>aucune</div>
@@ -64,7 +64,7 @@ Modifier
             <label>Attestation :</label>
             @if($data->attestation)
             <div>  
-                <a href="/storage/{{$data->attestation}}" >Voir</a>
+                <a href="/storage/{{$data->attestationDoc->path}}" >Voir</a>
             </div>
             @else
                 <div>aucune</div>
@@ -75,7 +75,7 @@ Modifier
                 <label>Contrat :</label>
                 @if($data->contrat)
                 <div>  
-                    <a href="/storage/{{$data->contrat}}" >Voir</a>
+                    <a href="/storage/{{$data->contratDoc->path}}" >Voir</a>
                 </div>
                 @else
                 <div>aucune</div>

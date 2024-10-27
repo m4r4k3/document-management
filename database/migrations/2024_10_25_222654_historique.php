@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string("from")->nullable();
             $table->string("to")->nullable();
             $table->string("case");
-            $table->integer("action");
+            $table->unsignedBigInteger("action");
             $table->softDeletes();  
 
             $table->rememberToken();
             
             $table->foreign("order")->references("id")->on("order") ;
+            $table->foreign("action")->references("id")->on("type_action") ;
             $table->foreign("by")->references("id")->on("user") ;
         }); 
     }

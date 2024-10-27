@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Historique;
 use App\Models\Order;
+use App\Models\Image;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -43,7 +44,7 @@ class DocumentController extends Controller
         $date = $request->input("date");
         $data = Order::with([
             "client"
-        ])->join('client', 'order.client_id', '=', 'client.id')
+        ])
             ->where(
                 "order.id",
                 "LIKE",
@@ -63,7 +64,7 @@ class DocumentController extends Controller
     }
     public function editShow(Order $order)
     {
-        $data = $order->load(["client", "creater", "modifier_par"]);
+        $data = $order->load(["client", "creater", "modifier_par" , "cinDoc" , "attestationDoc" ,"cgDoc", "pcDoc", "contratDoc"]);
         return view("edit", compact(["data"]));
     }
     public function addShow()
@@ -85,19 +86,33 @@ class DocumentController extends Controller
 
         $client = Client::where("cin", "=", $form["cin"])->first();
 
+        
         $form["creer_par"] = Auth::id();
         $id = !$client ? Client::create($form)->id
-            : $client->id;
+        : $client->id;
+        unset($form["cin"]) ;
 
-        $form["creer_par"] = Auth::id();
-        $form["PC"] = $request->has("PC") ? $request->file("PC")->store("pc", "public") : null;
-        $form["attestation"] = $request->has("attestation") ? $request->file("attestation")->store("attestation", "public") : null;
-        $form["cin"] = $request->has("docCin") ? $request->file("docCin")->store("cin", "public") : null;
-        $form["CG"] = $request->has("CG") ? $request->file("CG")->store("cg", "public") : null;
-        $form["contrat"] = $request->has("contrat") ? $request->file("contrat")->store("contrat", "public") : null;
+        foreach ($request->files as $key => $file) {
+            $form[$key] = Image::create([
+                "path"  =>$request->file($key)->store($key,"public"),
+                "size"  =>$request->file($key)->getSize() ,
+            ])->id ;
+        }
+
         $form["client_id"] = $id;
 
         $order = Order::create($form);
+
+        foreach ($form as $key => $value) {
+            Historique::create([
+                "order" => $order->id,
+                "by" => Auth::id(),
+                "from" => "",
+                "to" => $value,
+                "case" => $key,
+                "action" => 1
+            ]);
+        }
 
         return to_route("home");
     }
@@ -129,8 +144,9 @@ class DocumentController extends Controller
         $order->update($form->toArray());
         return to_route("editShow", $order->id);
     }
-    public function showDoc($type, $id)
+    public function showDoc(String $type, String $id)
     {
+        
         $path = storage_path("app/public/" . $type . "/" . $id);
         $file = File::get($path);
 

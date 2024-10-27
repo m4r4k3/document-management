@@ -22,21 +22,18 @@
             <div class="sub-sub-container">
                 <table>
                     <thead>
+                        <td>Id</td>
                         <td>Id order</td>
                         <td>Numero client</td>
                         <td>Nom complet</td>
-                        <td>Créer au</td>
-                        <td>Numero cin</td>
+                        <td>ajouter Par</td>
+                        <td>type document</td>
+                        <td>taille</td>
                     </thead>
                     <tbody>
                         <tr>
                             <td>placeholder</td>
                             <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                        </tr>
-                        <tr>
                             <td>placeholder</td>
                             <td>placeholder</td>
                             <td>placeholder</td>

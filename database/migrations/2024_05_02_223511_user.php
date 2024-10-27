@@ -17,10 +17,16 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string("password");
-            $table->string("role"); 
+            $table->unsignedBigInteger("role"); 
             $table->string("cin"); 
+
             $table->rememberToken();
             $table->timestamps();
+
+            $table->unsignedBigInteger("creater")->nullable(); 
+
+            $table->foreign("creater")->references("id")->on("user");
+            $table->foreign("role")->references("id")->on("role");
         })  ; 
     }
 

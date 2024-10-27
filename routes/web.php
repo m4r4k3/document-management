@@ -29,6 +29,8 @@ Route::middleware(["auth"])->group(function (){
     Route::post("/add", [DocumentController::class , "add"])->name("add");
     Route::get("/document/{order}", [DocumentController::class , "editShow"])->name("editShow");
     Route::put("/document/edit/{order}", [DocumentController::class , "edit"])->name("edit");
+    Route::get("/storage/{type}/{id}", [DocumentController::class , "showDoc"])->name("showDoc");
+
 });
 Route::middleware(["guest"])->group(function (){
     Route::get('/auth', [SignInController::class , "show"])->name("auth_show")->middleware();

@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create("image" ,function (Blueprint $table){
+        Schema::create("role" ,function (Blueprint $table){
             $table->id() ;
-            $table->string("path") ;
-            $table->integer("size") ;
-            
-        } ) ;
+            $table->string("role") ;
+        } ) ; 
     }
 
     /**

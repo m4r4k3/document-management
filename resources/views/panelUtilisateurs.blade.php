@@ -27,18 +27,22 @@
                         <td>prenom</td>
                         <td>role</td>
                          <td>cin</td>
-                         <td>Actions</td>
-                         <td>Supprimer</td>
-                         <td>Modifier</td>
                          <td>ajouter</td>
+                         <td>Modifier</td>
+                         <td>Supprimer</td>
+                         <td>Actions</td>
                    </thead>
                     <tbody>
                        @foreach($data as $item)  
                         <td>{{$item->user}}</td>
                         <td>{{$item->nom}}</td>
                         <td>{{$item->prenom}}</td>
-                        <td>{{$item->role}}</td>
+                        <td>{{$item->stringRole}}</td>
                         <td>{{$item->cin}}</td>
+                        <td>{{$item->created}}</td>
+                        <td>{{$item->modified}}</td>
+                        <td>{{$item->deleted}}</td>
+                        <td>{{$item->actions}}</td>
                     @endforeach
                     </tbody>
                 </table>

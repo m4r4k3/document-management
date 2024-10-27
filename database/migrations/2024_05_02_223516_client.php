@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->unsignedBigInteger("modifier_par")->nullable();
             $table->unsignedBigInteger("creer_par");
 
+            $table->softDeletes() ;
             $table->rememberToken();
 
             $table->foreign("modifier_par")->references("id")->on("user") ;

@@ -9,16 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Historique extends Model
 {
     use SoftDeletes ;
+    public $table ="historique" ;
     protected $dates = ['deleted_at'];
     protected $fillable = ["order", "by", "from", "to", "case" ,"action"];
     public function order()
     {
-        return $this->hasOne(Order::class, "id", "order");
+        return $this->belongsTo(Order::class);
 
     }
     public function by()
     {
-        return $this->hasOne(User::class, "id", "by");
+        return $this->belongsTo(User::class);
 
     }
     use HasFactory;
