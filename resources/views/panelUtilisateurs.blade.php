@@ -22,27 +22,24 @@
             <div class="sub-sub-container">
                 <table>
                     <thead>
-                        <td>Id order</td>
-                        <td>Numero client</td>
-                        <td>Nom complet</td>
-                        <td>Créer au</td>
-                        <td>Numero cin</td>
-                    </thead>
+                        <td>user</td>
+                        <td>nom</td>
+                        <td>prenom</td>
+                        <td>role</td>
+                         <td>cin</td>
+                         <td>Actions</td>
+                         <td>Supprimer</td>
+                         <td>Modifier</td>
+                         <td>ajouter</td>
+                   </thead>
                     <tbody>
-                        <tr>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                        </tr>
-                        <tr>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                        </tr>
+                       @foreach($data as $item)  
+                        <td>{{$item->user}}</td>
+                        <td>{{$item->nom}}</td>
+                        <td>{{$item->prenom}}</td>
+                        <td>{{$item->role}}</td>
+                        <td>{{$item->cin}}</td>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

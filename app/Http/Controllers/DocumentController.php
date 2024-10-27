@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Historique;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,8 +16,9 @@ class DocumentController extends Controller
 {
     public function show(Request $request)
     {
-        $search = "%" . $request->input("q") . "%";
-        $order = $request->filled("order") ?$request->input("order") :"desc";
+
+        $q = $request->filled("q") ? $request->input("q") : "";
+        $order = $request->filled("order") ? $request->input("order") : "desc";
 
         switch ($request->input("sort")) {
             case "orderId":
@@ -34,34 +36,35 @@ class DocumentController extends Controller
             case "cin":
                 $sort = "client.cin";
                 break;
-            default :
-                $sort  = "order.created_at" ;
+            default:
+                $sort = "order.created_at";
         }
-        $year = $request->input("date");
 
+        $date = $request->input("date");
         $data = Order::with([
             "client"
-        ]) ->join('client', 'order.client_id', '=', 'client.id')
+        ])->join('client', 'order.client_id', '=', 'client.id')
             ->where(
                 "order.id",
                 "LIKE",
-                $search
+                "%$q%"
             )
-            ->orWhereHas("client", function ($query) use ($search) {
-                $query->where("cin", "LIKE", $search)
-                    ->orWhere("nom", "LIKE", $search)
-                    ->orWhere("prenom", "LIKE", $search);
+            ->orWhereHas("client", function ($query) use ($q) {
+                $query->where("cin", "LIKE", "%$q%")
+                    ->orWhere("nom", "LIKE", "%$q%")
+                    ->orWhere("prenom", "LIKE", "%$q%");
             })
-            ->when($year, function ($query) use ($year) {
-                $query->whereDate("order.created_at", "=", $year);
-            })->orderBy($sort , $order)
+            ->when($date, function ($query) use ($date) {
+                $query->whereDate("order.created_at", "=", $date);
+            })->orderBy($sort, $order)
             ->get();
 
-            return view("index", compact(["data" , "order"]));
+        return view("index", compact(["data", "order", "q", "date"]));
     }
-    public function editShow(Order $sort)
+    public function editShow(Order $order)
     {
-        return view("edit", ["order" => $sort, "client" => Client::find($sort->client), "creer_par" => User::find($sort->creer_par)->nom_complet, "modifier_par" => $sort->modifier_par != "aucun" ? User::find($sort->modifier_par)->nom_complet : "aucun"]);
+        $data = $order->load(["client", "creater", "modifier_par"]);
+        return view("edit", compact(["data"]));
     }
     public function addShow()
     {
@@ -83,7 +86,6 @@ class DocumentController extends Controller
         $client = Client::where("cin", "=", $form["cin"])->first();
 
         $form["creer_par"] = Auth::id();
-
         $id = !$client ? Client::create($form)->id
             : $client->id;
 
@@ -95,10 +97,11 @@ class DocumentController extends Controller
         $form["contrat"] = $request->has("contrat") ? $request->file("contrat")->store("contrat", "public") : null;
         $form["client_id"] = $id;
 
-        $sort = Order::create($form);
+        $order = Order::create($form);
+
         return to_route("home");
     }
-    public function edit(Order $sort, Request $request)
+    public function edit(Order $order, Request $request)
     {
         $form = $request->validate([
             'PC' => 'file|mimes:pdf,xls|max:5048',
@@ -108,17 +111,23 @@ class DocumentController extends Controller
             'contrat' => 'file|mimes:pdf,xls|max:5048',
         ]);
 
+        foreach ($form->post() as $item) {
+            print ($item);
+        }
         $form["PC"] = $request->has("PC") ? $request->file("PC")->store("pc", "public") : null;
         $form["cin"] = $request->has("cin") ? $request->file("cin")->store("cin", "public") : null;
         $form["CG"] = $request->has("CG") ? $request->file("CG")->store("cg", "public") : null;
         $form["attestation"] = $request->has("attestation") ? $request->file("attestation")->store("attestation", "public") : null;
         $form["contrat"] = $request->has("contrat") ? $request->file("contrat")->store("contrat", "public") : null;
+
         $form = collect($form)->filter(function ($elm) {
             return $elm != null;
         });
+
         $form["modifier_par"] = User::find(Auth::id())->id;
-        $sort->update($form->toArray());
-        return to_route("editShow", $sort->id);
+
+        $order->update($form->toArray());
+        return to_route("editShow", $order->id);
     }
     public function showDoc($type, $id)
     {

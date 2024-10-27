@@ -13,11 +13,11 @@ class Order extends Model
     public function client () {
         return $this->hasOne(Client::class ,"id" ,"client_id");
     }
-    public function creer_par (){
+    public function creater (){
         return $this->hasOne(User::class , "id","creer_par" );
     }
     public function modifier_par (){
-        return $this->hasOne(User::class , "id","modifier_par" );
+        return $this->hasMany(User::class , "id","modifier_par" );
     }
     
 }

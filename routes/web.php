@@ -21,6 +21,7 @@ Route::get("/panel/utilisateurs", [PanelController::class , "utilisateurs"])->na
 Route::get("/panel/documents", [PanelController::class , "documents"])->name("panelDocument");
 Route::get("/panel/utilisateurs/ajouter", [PanelController::class , "ajouterUtilisateurs"])->name("ajouterUtilisateurs");
 Route::get("/panel/historique", [PanelController::class , "historique"])->name("panelHistorique");
+Route::get("/panel/clients", [PanelController::class , "clients"])->name("panelClients");
 
 Route::middleware(["auth"])->group(function (){
     Route::get("/", [DocumentController::class ,"show"])->name("home"); 

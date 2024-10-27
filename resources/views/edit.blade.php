@@ -12,26 +12,26 @@ Modifier
 <x-nav return={{false}}></x-nav>
 
 <div class="box-container">
-    <form class="info" action="{{route("edit",$order->id)}}" method="POST" enctype="multipart/form-data">
+    <form class="info" action="{{route("edit",$data->id)}}" method="POST" enctype="multipart/form-data">
         @method("put")
         @csrf
         <div class="info-title">
-        <div> <span>Numero client </span>:<label>{{$client->id}}</label> </div>
-        <div> <span>Nom complet</span>:<label>{{$client->nom_client}}</label> </div>
-        <div> <span>Numero CIN </span>:<label>{{$client->numero_cin}}</label> </div>
+        <div> <span>Numero client </span>:<label>{{$data->client->id}}</label> </div>
+        <div> <span>Nom complet</span>:<label>{{$data->client->nom}} {{$data->client->prenom}}</label> </div>
+        <div> <span>Numero CIN </span>:<label>{{$data->client->cin}}</label> </div>
     </div>
     <div class="worker-info">
-        <div><label> Crée au :</label> <span>  {{$order->created_at}} </span></div>
-        <div><label> Modifier au :</label><span>   {{$order->updated_at}}</span></div>
-        <div><label> Modifier par :</label> <span>  {{$modifier_par}}</span></div>
-        <div><label> Crée par :</label><span>   {{$creer_par}}</span></div>
+        <div><label> Crée au :</label> <span>  {{$data->created_at}} </span></div>
+        <div><label> Modifier au :</label><span>   {{$data->updated_at}}</span></div>
+        <div><label> Modifier par :</label> <span>  {{$data->modifier_par ?$data->modifier_par->nom:"Aucun"}} {{$data->modifier_par?$data->modifer_par->prenom:""}}</span></div>
+        <div><label> Crée par :</label><span>    {{$data->creater->nom}} {{$data->creater->prenom}}</span></div>
     </div>
     <div class="documents">
         <div>
             <label>CIN :</label> 
-            @if($order->cin)
+            @if($data->cin)
             <div> 
-                <a href= "/storage/{{$order->cin}}">Voir</a>
+                <a href= "/storage/{{$data->cin}}">Voir</a>
             </div> 
             @else
                 <div>aucune</div>
@@ -40,9 +40,9 @@ Modifier
         </div>
         <div>
             <label>CG:</label>  
-            @if($order->CG)
+            @if($data->CG)
             <div>
-                <a href= "/storage/{{$order->CG}}">Voir</a>
+                <a href= "/storage/{{$data->CG}}">Voir</a>
             </div> 
             @else
                 <div>aucune</div>
@@ -51,9 +51,9 @@ Modifier
         </div>
         <div>
             <label>PC :</label>
-            @if($order->PC)
+            @if($data->PC)
             <div> 
-                 <a href="/storage/{{$order->PC}}">Voir</a>
+                 <a href="/storage/{{$data->PC}}">Voir</a>
             </div>  
             @else
                 <div>aucune</div>
@@ -62,9 +62,9 @@ Modifier
             </div>
          <div>
             <label>Attestation :</label>
-            @if($order->attestation)
+            @if($data->attestation)
             <div>  
-                <a href="/storage/{{$order->attestation}}" >Voir</a>
+                <a href="/storage/{{$data->attestation}}" >Voir</a>
             </div>
             @else
                 <div>aucune</div>
@@ -73,9 +73,9 @@ Modifier
             </div>
             <div>
                 <label>Contrat :</label>
-                @if($order->contrat)
+                @if($data->contrat)
                 <div>  
-                    <a href="/storage/{{$order->contrat}}" >Voir</a>
+                    <a href="/storage/{{$data->contrat}}" >Voir</a>
                 </div>
                 @else
                 <div>aucune</div>

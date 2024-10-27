@@ -17,8 +17,7 @@ class Client extends Model
     public function modifier_par (){
         return $this->hasOne(User::class , "id","modifier_par" );
     }
-    public function order () {
-        return $this->belongsTo(Order::class , "client") ;
-        }
-    
+    public function order() {
+        return $this->hasMany(Order::class ,"client_id" , "id") ;
+    }
 }

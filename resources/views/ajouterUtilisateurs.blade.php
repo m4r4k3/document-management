@@ -12,7 +12,7 @@
         <div class="sub-container">
             <div class="title-sub">Ajouter Un Utilisateur</div>
             <div class="sub-sub-container">
-                <form class="ajouter" >
+                <form class="ajouter-form" >
                     <div class="form-group">
                         <label for="nom">Nom:</label>
                         <input type="text" id="nom" name="nom" required>

@@ -17,8 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('order');
             $table->unsignedBigInteger('by');
             $table->string("from")->nullable();
-            $table->string("to");
+            $table->string("to")->nullable();
             $table->string("case");
+            $table->integer("action");
+            $table->softDeletes();  
 
             $table->rememberToken();
             

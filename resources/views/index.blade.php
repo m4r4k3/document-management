@@ -16,18 +16,19 @@ selectioner par date :
 <input 
     type="date"
     class="yearInput"
+    value="{{$date}}"
     name="date"
     max="2100"
 />
 </form>
 <table class="box-container">
     <thead class="header">
-        <td><a href="/?sort=orderId&order={{$order == "asc" ?"desc":"asc"}}">order</a></td>
-        <td><a href="/?sort=nClient&order={{$order == "asc" ?"desc":"asc"}}">Numero client</a></td>
-        <td><a href="/?sort=nom&order={{$order == "asc" ?"desc":"asc"}}"> Nom</a></td>
-        <td><a href="/?sort=prenom&order={{$order == "asc" ?"desc":"asc"}}"> Prenom</a></td>
-        <td><a href="/order={{$order == "asc" ?"desc":"asc"}}"> Créer au</a></td>
-        <td><a href="/?sort=cin&order={{$order == "asc" ?"desc":"asc"}}"> Numero cin</a></td>
+        <td><a href="./?date={{$date}}&q={{$q}}&sort=orderId&order={{$order == "asc" ?"desc":"asc"}}">order</a></td>
+        <td><a href="./?date={{$date}}&q={{$q}}&sort=nClient&order={{$order == "asc" ?"desc":"asc"}}">Numero client</a></td>
+        <td><a href="./?date={{$date}}&q={{$q}}&sort=nom&order={{$order == "asc" ?"desc":"asc"}}"> Nom</a></td>
+        <td><a href="./?date={{$date}}&q={{$q}}&sort=prenom&order={{$order == "asc" ?"desc":"asc"}}"> Prenom</a></td>
+        <td><a href="./?date={{$date}}&q={{$q}}&order={{$order == "asc" ?"desc":"asc"}}"> Créer au</a></td>
+        <td><a href="./?date={{$date}}&q={{$q}}&sort=cin&order={{$order == "asc" ?"desc":"asc"}}"> Numero cin</a></td>
     </thead>
     @foreach ($data as $item)
     <x-box 
