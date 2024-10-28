@@ -22,6 +22,7 @@ Route::get("/panel/documents", [PanelController::class , "documents"])->name("pa
 Route::get("/panel/utilisateurs/ajouter", [PanelController::class , "ajouterUtilisateurs"])->name("ajouterUtilisateurs");
 Route::get("/panel/historique", [PanelController::class , "historique"])->name("panelHistorique");
 Route::get("/panel/clients", [PanelController::class , "clients"])->name("panelClients");
+Route::post("/adduser", [SignInController::class , "createUser"])->name("createUser");
 
 Route::middleware(["auth"])->group(function (){
     Route::get("/", [DocumentController::class ,"show"])->name("home"); 

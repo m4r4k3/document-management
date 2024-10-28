@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Historique;
+use App\Models\ImageOrder;
 use App\Models\Order;
 use App\Models\Image;
 use App\Models\User;
@@ -93,10 +94,11 @@ class DocumentController extends Controller
         unset($form["cin"]) ;
 
         foreach ($request->files as $key => $file) {
-            $form[$key] = Image::create([
+            $form[$key] = $files[$key] = Image::create([
                 "path"  =>$request->file($key)->store($key,"public"),
                 "size"  =>$request->file($key)->getSize() ,
                 "type"  =>$key ,
+                "creer_par"=>Auth::id() 
             ])->id ;
         }
 
@@ -104,6 +106,12 @@ class DocumentController extends Controller
 
         $order = Order::create($form);
 
+        foreach ($files as $key => $value) {
+            ImageOrder::insert([
+                "image_id"=>$value ,
+                "order_id"=>$order->id
+            ]);
+        }
         foreach ($form as $key => $value) {
             Historique::create([
                 "order" => $order->id,

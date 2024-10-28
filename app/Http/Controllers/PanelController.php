@@ -24,16 +24,13 @@ class PanelController extends Controller
       $data = Client::select(
          'client.*',
          DB::raw('
-             COUNT(cin_image.path) + COUNT(attestation_image.path) + COUNT(CG_image.path) + COUNT(PC_image.path) + COUNT(contrat_image.path) as numDocs,
-             COALESCE(SUM(cin_image.size), 0) + COALESCE(SUM(attestation_image.size), 0) + COALESCE(SUM(CG_image.size), 0) + COALESCE(SUM(PC_image.size), 0) + COALESCE(SUM(contrat_image.size), 0) as size
+             COUNT(image.path) as numDocs,
+             COALESCE(SUM(image.size), 0) as size
          ')
      )
      ->leftJoin('order', 'order.client_id', '=', 'client.id')
-     ->leftJoin('image as cin_image', 'order.cin', '=', 'cin_image.id')
-     ->leftJoin('image as attestation_image', 'order.attestation', '=', 'attestation_image.id')
-     ->leftJoin('image as CG_image', 'order.CG', '=', 'CG_image.id')
-     ->leftJoin('image as PC_image', 'order.PC', '=', 'PC_image.id')
-     ->leftJoin('image as contrat_image', 'order.contrat', '=', 'contrat_image.id')
+     ->leftJoin('imageOrder', 'order.id', '=', 'imageOrder.order_id')
+     ->leftJoin('image', 'imageOrder.image_id', '=', 'image.id')
      ->groupBy('client.id') 
      ->with('creater') 
      ->withCount('order')
@@ -62,11 +59,12 @@ class PanelController extends Controller
    }
    public function documents()
    {
-      $data = Image::
-      select(DB::raw("image.* , cin_order.* , attestation_order.* , CG_order.* ,PC_order.* , contrat_order.*"))
-      ->join('order', 'order.(image.type)', '=', 'image.id')
+      $data = Image::with("creator")->
+      leftJoin('imageOrder', 'imageOrder.image_id', '=', 'image.id')
+      ->leftJoin('order', 'order.id', '=', 'imageOrder.order_id')
+      ->leftJoin('client', 'order.client_id', '=', 'client.id')
       ->get() ;
-      return Response::json($data)  ;
+      
       return view("panelDocument" , compact("data"));
    }
    public function ajouterUtilisateurs()

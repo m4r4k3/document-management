@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string("path") ;
             $table->timestamps() ;
             $table->integer("size") ;
+            $table->unsignedBigInteger("creer_par") ;
             $table->string("type") ;
+
+            $table->foreign("creer_par")->references("id")->on("user") ;
         } ) ;
     }
 

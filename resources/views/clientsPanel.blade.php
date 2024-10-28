@@ -22,7 +22,7 @@
             <div class="sub-sub-container">
                 <table>
                         <thead>
-                        <td>Id</td>
+                        <td>ID</td>
                         <td>Nom</td>
                         <td>Prenom</td>
                         <td>CIN</td>

@@ -12,7 +12,7 @@
         <div class="sub-container">
             <div class="title-sub">Ajouter Un Utilisateur</div>
             <div class="sub-sub-container">
-                <form class="ajouter-form" >
+                <form class="ajouter-form" method="POST" action="{{route("createUser")}}">
                     <div class="form-group">
                         <label for="nom">Nom:</label>
                         <input type="text" id="nom" name="nom" required>
@@ -30,12 +30,16 @@
                 
                       <div class="form-group">
                         <label for="fonction">Fonction:</label>
-                        <input type="text" id="fonction" name="fonction" required>
-                      </div>
+                        <select name="role">
+                          <option disabled selected>Fonction</option>
+                          <option value="1"  >Admin</option>
+                          <option value="2"  >Operateur</option>
+                        </select>
+                        </div>
                 
                       <div class="form-group">
                         <label for="pseudo">Pseudo:</label>
-                        <input type="text" id="pseudo" name="pseudo" required>
+                        <input type="text" id="pseudo" name="user" required>
                       </div>
                 
                       <div class="form-group">
@@ -45,7 +49,7 @@
                 
                       <div class="form-group">
                         <label for="confirm_password">Confirmer le mot de passe:</label>
-                        <input type="password" id="confirm_password" name="confirm_password" required>
+                        <input type="password" id="confirm_password" name="password_confirmation" required>
                       </div>
                 
                       <button type="submit" class="submit">Soumettre</button>

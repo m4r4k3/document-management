@@ -28,18 +28,18 @@
                         <td>Nom complet</td>
                         <td>ajouter Par</td>
                         <td>type document</td>
-                        <td>taille</td>
+                        <td>taille (mb)</td>
                     </thead>
                     <tbody>
                         @foreach($data as $item)
                         <tr>
-                            <td>{{$item->id}}</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>{{$item->type}}</td>
-                            <td>{{number_format($item->size *0.0000001192,2)}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{$item->image_id}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{$item->order_id}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{$item->client_id}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{$item->prenom }} {{$item->nom}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{$item->creator->prenom }} {{$item->creator->nom}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{$item->type}}</td>
+                            <td><a href="/storage/{{$item->path}}"{{number_format($item->size *0.0000001192,2)}}</td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -20,6 +20,20 @@ class SignInController extends Controller
         }
         ;
     }
+    public function createUser(Request $request){
+        dd("test") ;
+        $form = $request->validate(
+            [
+                "nom"=>"required|string|max:20",
+                "prenom"=>"required|string|max:20",
+                "cin"=>"required|string|max:20|unique:client",
+                "role"=>"required|integer",
+                "user"=>"required|string|min:5|max:20",
+                "password"=>"required|string|min:5|max:20|confirmed",
+         ]
+         );
+         User::create($form) ;
+    }
     public function logout(Request $request){
         Auth::logout();
         \Session::flush();
