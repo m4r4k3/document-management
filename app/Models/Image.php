@@ -9,5 +9,6 @@ class Image extends Model
 {
     use HasFactory;
     public $table = "image"  ;
-    public $fillable = ["path" , "size"] ;
+    public $fillable = ["path" , "size" ,"type"] ;
+    
 }

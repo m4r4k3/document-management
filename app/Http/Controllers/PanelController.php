@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Historique;
+use App\Models\Order;
+use App\Models\Image;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Client;
@@ -60,8 +62,12 @@ class PanelController extends Controller
    }
    public function documents()
    {
-
-      return view("panelDocument");
+      $data = Image::
+      select(DB::raw("image.* , cin_order.* , attestation_order.* , CG_order.* ,PC_order.* , contrat_order.*"))
+      ->join('order', 'order.(image.type)', '=', 'image.id')
+      ->get() ;
+      return Response::json($data)  ;
+      return view("panelDocument" , compact("data"));
    }
    public function ajouterUtilisateurs()
    {

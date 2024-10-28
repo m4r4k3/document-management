@@ -22,12 +22,12 @@
             <div class="sub-sub-container">
                 <table>
                     <thead>
-                       <td> iD Order</td>
-                       <td>  by</td>
-                      <td>    from</td>
-                       <td>    to</td>
-                       <td>    case</td>
-                        <td>   action</td>
+                       <td>ID Order</td>
+                       <td>Acteur</td>
+                      <td></td>
+                       <td>to</td>
+                       <td>case</td>
+                        <td>action</td>
                     </thead>
                     <tbody>
                         <tr>

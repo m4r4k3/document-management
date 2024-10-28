@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string("path") ;
             $table->timestamps() ;
             $table->integer("size") ;
-
+            $table->string("type") ;
         } ) ;
     }
 

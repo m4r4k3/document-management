@@ -96,6 +96,7 @@ class DocumentController extends Controller
             $form[$key] = Image::create([
                 "path"  =>$request->file($key)->store($key,"public"),
                 "size"  =>$request->file($key)->getSize() ,
+                "type"  =>$key ,
             ])->id ;
         }
 

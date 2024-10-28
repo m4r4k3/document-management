@@ -22,8 +22,8 @@
             <div class="sub-sub-container">
                 <table>
                     <thead>
-                        <td>Id</td>
-                        <td>Id order</td>
+                        <td>ID</td>
+                        <td>ID order</td>
                         <td>Numero client</td>
                         <td>Nom complet</td>
                         <td>ajouter Par</td>
@@ -31,15 +31,17 @@
                         <td>taille</td>
                     </thead>
                     <tbody>
+                        @foreach($data as $item)
                         <tr>
+                            <td>{{$item->id}}</td>
                             <td>placeholder</td>
                             <td>placeholder</td>
                             <td>placeholder</td>
                             <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
-                            <td>placeholder</td>
+                            <td>{{$item->type}}</td>
+                            <td>{{number_format($item->size *0.0000001192,2)}}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
