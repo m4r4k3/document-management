@@ -84,15 +84,14 @@ class DocumentController extends Controller
             'CG' => 'file|mimes:pdf,xls|max:5048',
             'contrat' => 'file|mimes:pdf,xls|max:5048',
         ]);
+        $files = [] ;
+        $form["creer_par"] = Auth::id();
 
         $client = Client::where("cin", "=", $form["cin"])->first();
-
-        
-        $form["creer_par"] = Auth::id();
         $id = !$client ? Client::create($form)->id
         : $client->id;
+        
         unset($form["cin"]) ;
-
         foreach ($request->files as $key => $file) {
             $form[$key] = $files[$key] = Image::create([
                 "path"  =>$request->file($key)->store($key,"public"),

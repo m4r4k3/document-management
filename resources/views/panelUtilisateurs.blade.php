@@ -34,6 +34,7 @@
                    </thead>
                     <tbody>
                        @foreach($data as $item)  
+                        <tr>
                         <td>{{$item->user}}</td>
                         <td>{{$item->nom}}</td>
                         <td>{{$item->prenom}}</td>
@@ -43,6 +44,7 @@
                         <td>{{$item->modified}}</td>
                         <td>{{$item->deleted}}</td>
                         <td>{{$item->actions}}</td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

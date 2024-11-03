@@ -78,7 +78,7 @@
                 </div>
                 <div class="section-table">
                     <div class="section-table-header">
-                        <div class="section-table-title">Des Analyse</div>
+                        <div class="section-table-title">Des Analyses</div>
                         <div class="voir-plus">...Voir plus</div>
                     </div>
                     <div class="charts">

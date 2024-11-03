@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth ;
 use Illuminate\Http\Request;
+use App\Models\User ;
+use Response;
 
 class SignInController extends Controller
 {
@@ -21,8 +23,7 @@ class SignInController extends Controller
         ;
     }
     public function createUser(Request $request){
-        dd("test") ;
-        $form = $request->validate(
+         $form = $request->validate(
             [
                 "nom"=>"required|string|max:20",
                 "prenom"=>"required|string|max:20",
@@ -32,6 +33,7 @@ class SignInController extends Controller
                 "password"=>"required|string|min:5|max:20|confirmed",
          ]
          );
+         $form["password"]= bcrypt($form["password"]) ;
          User::create($form) ;
     }
     public function logout(Request $request){

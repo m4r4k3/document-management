@@ -73,7 +73,7 @@ class PanelController extends Controller
    }
    public function historique()
    {
-      $data = Historique::all() ;
+      $data = Historique::with(["byName" , "actionName"])->get() ;
       return view("panelHistorique" , compact("data"));
    }
 }

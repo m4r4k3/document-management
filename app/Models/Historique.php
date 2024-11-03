@@ -17,9 +17,14 @@ class Historique extends Model
         return $this->belongsTo(Order::class);
 
     }
-    public function by()
+    public function byName()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class , "by" , "id");
+
+    }
+    public function actionName()
+    {
+        return $this->belongsTo(TypeAction::class , "action" , "id");
 
     }
     use HasFactory;

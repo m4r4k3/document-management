@@ -39,7 +39,7 @@
                             <td><a href="/storage/{{$item->path}}">{{$item->prenom }} {{$item->nom}}</td>
                             <td><a href="/storage/{{$item->path}}">{{$item->creator->prenom }} {{$item->creator->nom}}</td>
                             <td><a href="/storage/{{$item->path}}">{{$item->type}}</td>
-                            <td><a href="/storage/{{$item->path}}"{{number_format($item->size *0.0000001192,2)}}</td>
+                            <td><a href="/storage/{{$item->path}}">{{number_format($item->size *0.0000001192,2)}}</td>
                         </tr>
                         @endforeach
                     </tbody>

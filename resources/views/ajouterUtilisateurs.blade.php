@@ -12,7 +12,8 @@
         <div class="sub-container">
             <div class="title-sub">Ajouter Un Utilisateur</div>
             <div class="sub-sub-container">
-                <form class="ajouter-form" method="POST" action="{{route("createUser")}}">
+                <form class="ajouter-form" action="{{route("createUser")}}" method="POST">
+                  @csrf
                     <div class="form-group">
                         <label for="nom">Nom:</label>
                         <input type="text" id="nom" name="nom" required>
