@@ -9,7 +9,11 @@
         <li><div class="rounded-logo" title="analyse"><i class="fa-solid fa-chart-mixed"></i></li>
         <li><div class="rounded-logo" title="mon profile"><i class="fa-solid fa-user"></i></div></li>
     </ul>
-    <button class="delete-button">
-            <div class="rounded-logo"><i class="fa-solid fa-right-from-bracket"></i></div>
-    </button>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        @method('post')
+        <button class="delete-button" type="submit">
+                <div class="rounded-logo"><i class="fa-solid fa-right-from-bracket"></i></div>
+        </button>
+    </form>
 </aside>

@@ -15,8 +15,9 @@ class PanelController extends Controller
 {
    public function index()
    {
-      $data = Client::with(relations: "creater")->limit(2)->get();
-      return view("panelIndex", compact(["data"]));
+      $clients = Client::with(relations: "creater")->limit(2)->get();
+      $history = Historique::with(["byName" , "actionName"])->limit(2)->get() ;
+      return view("panelIndex", compact(["history" ,"clients"]));
    }
    public function clients()
    {
@@ -40,7 +41,7 @@ class PanelController extends Controller
    }
    public function utilisateurs()
    {
-      $data = User::select("*" ,"role.role as stringRole")->join("role" ,"role.id" , "=" , "user.role")->
+      $data = User::select("*"  ,"user.id","role.role as stringRole")->join("role" ,"role.id" , "=" , "user.role")->
       withCount([
          "actions as actions",
          "actions as created" => function ($query) {

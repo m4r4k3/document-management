@@ -22,6 +22,7 @@
             <div class="sub-sub-container">
                 <table>
                     <thead>
+                        <td>id</td>
                         <td>user</td>
                         <td>nom</td>
                         <td>prenom</td>
@@ -31,10 +32,12 @@
                          <td>Modifier</td>
                          <td>Supprimer</td>
                          <td>Actions</td>
+                         <td>creer le</td>
                    </thead>
                     <tbody>
                        @foreach($data as $item)  
                         <tr>
+                        <td>{{$item->id}}</td>
                         <td>{{$item->user}}</td>
                         <td>{{$item->nom}}</td>
                         <td>{{$item->prenom}}</td>
@@ -44,6 +47,7 @@
                         <td>{{$item->modified}}</td>
                         <td>{{$item->deleted}}</td>
                         <td>{{$item->actions}}</td>
+                        <td>{{$item->created_at}}</td>
                         </tr>
                     @endforeach
                     </tbody>
